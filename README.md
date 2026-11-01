@@ -43,3 +43,4 @@ The peak memory bandwidth of a T4 is 320 GB/s. Numbers vary slightly between run
 1. Write a `__global__` kernel in `kernels.cu`
 2. Add a launcher function inside the `extern "C"` block
 3. Call `lib.<name>(...)` from `bench.py` and compare the result with PyTorch
+
