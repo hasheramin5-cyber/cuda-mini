@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  python:
+    name: Lint and README check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install ruff
+      - run: ruff check .
+      # The results table in README.md must match results/*.json
+      - run: python tools/update_readme.py
+      - run: git diff --exit-code README.md
+
+  cuda-compile:
+    name: Compile CUDA kernels (no GPU needed)
+    runs-on: ubuntu-latest
+    container: nvidia/cuda:12.4.1-devel-ubuntu22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile every kernel file
+        run: |
+          for f in kernels/*.cu; do
+            nvcc -O3 -arch=sm_75 -c "$f" -o "/tmp/$(basename "$f").o"
+          done

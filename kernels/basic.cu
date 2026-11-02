@@ -1,5 +1,5 @@
-// kernels.cu - three small CUDA kernels for learning and benchmarking
-// Build: nvcc -O3 -shared -Xcompiler -fPIC kernels.cu -o libkernels.so
+// basic.cu - vector add, sum reduction and matrix transpose
+// Built together with the other files in kernels/ by bench.py (or `make`).
 #include <cuda_runtime.h>
 
 #define TILE 32
