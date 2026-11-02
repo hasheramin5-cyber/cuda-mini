@@ -1,0 +1,15 @@
+{
+  "gpu": "Tesla T4",
+  "compute_capability": "7.5",
+  "torch": null,
+  "cuda": null,
+  "peak_bandwidth_gbs": 320.0,
+  "results": [
+    {"kernel": "vec_add", "time_ms": 3.068, "bandwidth_gbs": 262.5, "gflops": null},
+    {"kernel": "torch.add", "time_ms": 3.395, "bandwidth_gbs": 237.2, "gflops": null},
+    {"kernel": "reduce_sum", "time_ms": 1.127, "bandwidth_gbs": 238.2, "gflops": null},
+    {"kernel": "torch.sum", "time_ms": 1.009, "bandwidth_gbs": 266.0, "gflops": null},
+    {"kernel": "transpose_naive", "time_ms": 7.09, "bandwidth_gbs": 75.7, "gflops": null},
+    {"kernel": "transpose_tiled", "time_ms": 2.781, "bandwidth_gbs": 193.0, "gflops": null}
+  ]
+}

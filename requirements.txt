@@ -1,0 +1,4 @@
+# torch must be a CUDA build (the default Linux wheel from PyPI is)
+torch
+pytest
+matplotlib
